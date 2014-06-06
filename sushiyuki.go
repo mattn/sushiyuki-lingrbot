@@ -6,10 +6,8 @@ import (
 	"fmt"
 	"github.com/hoisie/web"
 	"github.com/mattn/go-lingr"
-	//"log"
 	"math/rand"
 	"os"
-	//"path/filepath"
 	"regexp"
 )
 
@@ -72,12 +70,6 @@ var addr = flag.String("addr", defaultAddr(), "server address")
 
 func main() {
 	flag.Parse()
-
-	//cwd, err := os.Getwd()
-	//if err != nil {
-	//log.Fatal(err)
-	//}
-	//web.Config.StaticDir = filepath.Join(cwd, "public")
 
 	web.Post("/", func(ctx *web.Context) string {
 		var status struct {
