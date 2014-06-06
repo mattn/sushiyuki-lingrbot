@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"flag"
 	"fmt"
 	"github.com/hoisie/web"
@@ -72,10 +71,7 @@ func main() {
 	flag.Parse()
 
 	web.Post("/", func(ctx *web.Context) string {
-		var status struct {
-			Events []lingr.Event `json:"events"`
-		}
-		err := json.NewDecoder(ctx.Request.Body).Decode(&status)
+		status, err := lingr.DecodeStatus(ctx.Request.Body)
 		if err != nil {
 			ctx.Abort(500, err.Error())
 			return err.Error()
